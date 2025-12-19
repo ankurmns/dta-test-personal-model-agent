@@ -1,0 +1,18 @@
+# Core ML / Tracking
+mlflow[databricks]>=2.10.0
+
+# LLM & Agent framework
+langchain>=0.2.0
+langgraph==0.3.4
+pydantic>=2.5
+
+# Databricks integrations
+databricks-langchain>=0.2.0
+databricks-agents>=0.9.0
+databricks-vectorsearch>=0.36
+
+# Unity Catalog tools for LangChain
+unitycatalog-langchain[databricks]>=0.2.0
+
+# Dependency management (used by MLflow env_manager="uv")
+uv>=0.1.0

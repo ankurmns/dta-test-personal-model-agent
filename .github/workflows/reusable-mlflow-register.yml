@@ -1,0 +1,48 @@
+name: Reusable - MLflow Log & Register
+
+on:
+  workflow_call:
+    secrets:
+      DATABRICKS_HOST:
+        required: true
+      DATABRICKS_TOKEN:
+        required: true
+    outputs:
+      model_name:
+        description: "UC model name"
+        value: ${{ jobs.log-register.outputs.model_name }}
+      model_version:
+        description: "Registered model version"
+        value: ${{ jobs.log-register.outputs.model_version }}
+
+jobs:
+  log-register:
+    runs-on: ubuntu-latest
+
+    outputs:
+      model_name: ${{ steps.log.outputs.model_name }}
+      model_version: ${{ steps.log.outputs.model_version }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install mlflow databricks-cli
+
+      - name: Configure Databricks CLI
+        run: |
+          databricks configure --token <<EOF
+          ${{ secrets.DATABRICKS_HOST }}
+          ${{ secrets.DATABRICKS_TOKEN }}
+          EOF
+
+      - name: Log & register agent
+        id: log
+        run: |
+          python deployment/log_and_register.py

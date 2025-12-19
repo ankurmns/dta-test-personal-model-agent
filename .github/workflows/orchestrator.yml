@@ -1,0 +1,27 @@
+name: Helphub Agent CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  unit-tests:
+    uses: ./.github/workflows/reusable-unit-tests.yml
+
+  mlflow-register:
+    needs: unit-tests
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/reusable-mlflow-register.yml
+    secrets:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
+  terraform-deploy:
+    needs: mlflow-register
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/reusable-terraform-deploy.yml
+    secrets:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
