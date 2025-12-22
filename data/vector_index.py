@@ -5,6 +5,7 @@ from databricks.vector_search.client import VectorSearchClient
 from config.env import EMBEDDING_ENDPOINT_NAME, VECTOR_SEARCH_ENDPOINT
 from config.tables import vector_index_name
 
+
 def create_vector_indexes(module_tables: dict):
     client = VectorSearchClient()
 

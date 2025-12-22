@@ -19,9 +19,7 @@ client = MlflowClient()
 result = client.register_model(model_info.model_uri, full_model_name)
 
 client.set_registered_model_alias(
-    name=full_model_name,
-    alias="champion",
-    version=result.version
+    name=full_model_name, alias="champion", version=result.version
 )
 
 print(f"model_name={full_model_name}")
