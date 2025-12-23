@@ -1,24 +1,34 @@
 variable "databricks_host" {
-  type        = string
   description = "Databricks workspace URL"
+  type        = string
 }
 
 variable "databricks_token" {
+  description = "Databricks PAT token"
   type        = string
   sensitive   = true
 }
 
-variable "catalog" {
-  type    = string
-  default = "beam_ndev"
+variable "catalog_name" {
+  default = "ai_build"
 }
 
-variable "schema" {
-  type    = string
-  default = "helpdesk_sst"
+variable "schema_name" {
+  default = "helphub_serve_build"
 }
 
-variable "model_name" {
-  type    = string
-  default = "v5_help_hub_agent"
+variable "llm_endpoint_name" {
+  default = "gpt-oss-aibuild"
+}
+
+variable "embedding_endpoint_name" {
+  default = "databricks-gte-large-en"
+}
+
+variable "vector_search_endpoint_name" {
+  default = "helphub-vector-search"
+}
+
+variable "vector_index_name" {
+  default = "helphub_knowledgebase_champion_idx"
 }
