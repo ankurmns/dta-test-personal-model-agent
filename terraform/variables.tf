@@ -32,3 +32,9 @@ variable "vector_search_endpoint_name" {
 variable "vector_index_name" {
   default = "helphub_knowledgebase_champion_idx"
 }
+
+variable "workspace_root" {
+  description = "Root path in Databricks workspace"
+  type        = string
+  default     = "/Shared/helphub-agent"
+}

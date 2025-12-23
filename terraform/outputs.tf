@@ -9,3 +9,10 @@ output "embedding_endpoint" {
 output "vector_index" {
   value = local.vector_index_fqn
 }
+
+output "notebook_paths" {
+  value = {
+    for k, v in databricks_notebook.agent_notebooks :
+    k => v.path
+  }
+}
