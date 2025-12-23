@@ -1,20 +1,26 @@
 variable "databricks_host" {
   description = "Databricks workspace URL"
   type        = string
+  default = "default_value"
 }
 
 variable "databricks_token" {
   description = "Databricks PAT token"
   type        = string
   sensitive   = true
+  default = "default_value"
 }
 
-variable "catalog_name" {
+variable "catalog" {
   default = "ai_build"
 }
 
-variable "schema_name" {
+variable "schema" {
   default = "helphub_serve_build"
+}
+
+variable "model_name" {
+  default = "helphub_model"
 }
 
 variable "llm_endpoint_name" {
