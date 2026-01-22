@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.16",
+  "version": "1.0.0",
+  "id": "67df127a-e708-43f4-9d99-d0a65d5177e6",
+  "packageName": "com.databricks.cea",
+  "developer": {
+    "name": "Personal ChatBot",
+    "websiteUrl": "https://www.marksandspencer.com/",
+    "privacyUrl": "https://www.marksandspencer.com/c/data-protection-policy",
+    "termsOfUseUrl": "https://www.marksandspencer.com/c/offers/terms-and-conditions"
+  },
+  "name": {
+    "short": "Databricks Bot",
+    "full": "Databricks Custom Engine Agent"
+  },
+  "description": {
+    "short": "AI assistant powered by Databricks",
+    "full": "An intelligent AI assistant that leverages Databricks models to help you with data workflows, analytics, and insights. Ask questions in natural language and get AI-powered responses."
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#FF3621",
+  "bots": [
+    {
+      "botId": "67df127a-e708-43f4-9d99-d0a65d5177e6",
+      "scopes": [
+        "personal",
+        "team",
+        "groupchat"
+      ],
+      "supportsFiles": false,
+      "isNotificationOnly": false,
+      "commandLists": [
+        {
+          "scopes": [
+            "personal",
+            "team",
+            "groupchat"
+          ],
+          "commands": [
+            {
+              "title": "Help",
+              "description": "Get help using the bot"
+            },
+            {
+              "title": "About",
+              "description": "Learn about this bot"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "*.azurewebsites.net",
+    "*.azure.com"
+  ]
+}
